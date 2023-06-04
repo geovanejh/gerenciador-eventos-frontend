@@ -1,10 +1,13 @@
-import Sidebar from "../components/Sidebar/Sidebar";
+import Aside from "../components/Aside/Aside";
+import { DashboardContainer } from "../components/Dashboard/Dashboard.styled";
 
 const EventsPage = () => {
   return (
     <>
-      <Sidebar></Sidebar>
-      <h1>MEUS EVENTOS</h1>
+      <Aside />
+      <DashboardContainer>
+        <a>MEUS EVENTOS</a>
+      </DashboardContainer>
     </>
   );
 };

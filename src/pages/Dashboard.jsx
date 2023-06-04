@@ -1,15 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../components/Sidebar/Sidebar";
+import { DashboardContainer } from "../components/Dashboard/Dashboard.styled";
+import Aside from "../components/Aside/Aside";
 
-const LandingPage = () => {
+const Dashboard = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <Sidebar />
-    </div>
+    <>
+      <Aside />
+      <DashboardContainer>PÁGINA INICIAL</DashboardContainer>
+    </>
   );
 };
 
-export default LandingPage;
+export default Dashboard;

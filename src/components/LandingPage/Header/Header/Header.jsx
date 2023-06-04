@@ -1,4 +1,4 @@
-import PrimaryButton from "../../../Button/PrimaryButton/PrimaryButton";
+import { Button } from "../../../Button/Button";
 import Nav from "../Nav/Nav";
 import { HeaderContainer } from "./Header.styled";
 import { useNavigate } from "react-router-dom";
@@ -9,10 +9,9 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Nav />
-      <PrimaryButton
-        text="Acesse sua conta"
-        onClick={() => navigate("/login")}
-      />
+      <Button primary onClick={() => navigate("/login")}>
+        Acesse sua conta
+      </Button>
     </HeaderContainer>
   );
 };

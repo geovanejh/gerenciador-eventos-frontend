@@ -1,11 +1,14 @@
 import React from "react";
-import Sidebar from "../components/Sidebar/Sidebar";
+import Aside from "../components/Aside/Aside";
+import { DashboardContainer } from "../components/Dashboard/Dashboard.styled";
 
 const TicketsPage = () => {
   return (
     <>
-      <Sidebar></Sidebar>
-      <h1>PÁGINA DE TICKETS</h1>
+      <Aside />
+      <DashboardContainer>
+        <a>MEUS TICKETS</a>
+      </DashboardContainer>
     </>
   );
 };

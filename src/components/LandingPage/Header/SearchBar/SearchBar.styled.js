@@ -16,7 +16,7 @@ export const SearchBarContainer = styled.div`
     border-radius: 4px;
     font-size: 16px;
     padding: 4px 12px;
-    font-family: Montserrat;
+    font-family: Mulish;
     &:focus {
         outline: none;
         box-shadow: 0px 0px 2px #0f4392;
