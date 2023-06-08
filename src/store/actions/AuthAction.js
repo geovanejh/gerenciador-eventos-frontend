@@ -1,11 +1,11 @@
 import { setLoading } from "./UtilsAction";
-import { api } from "../../api";
+import { mock } from "../../api";
 
 export const handleLogin = async (values, dispatch, navigate) => {
   setLoading(dispatch);
   try {
-    const { data } = await api.post("/login", values);
-    api.defaults.headers.common["Authorization"] = data.token;
+    const { data } = await mock.post("/login", values);
+    mock.defaults.headers.common["Authorization"] = data.token;
     localStorage.setItem("token", data.token);
 
     dispatch({

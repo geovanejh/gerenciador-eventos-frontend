@@ -8,6 +8,7 @@ import Loading from "./components/Loading/Loading";
 import Dashboard from "./pages/Dashboard";
 import TicketsPage from "./pages/TicketsPage";
 import EventsPage from "./pages/EventsPage";
+import NewEvent from "./pages/NewEvent";
 
 const Router = ({ dispatch, auth, loading }) => {
   useEffect(() => {
@@ -25,6 +26,7 @@ const Router = ({ dispatch, auth, loading }) => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/tickets" element={<TicketsPage />} />
             <Route path="/events" element={<EventsPage />} />
+            <Route path="/events/create" element={<NewEvent />} />
             <Route path="*" element={<Navigate to="/dashboard" />} />
           </>
         ) : (
