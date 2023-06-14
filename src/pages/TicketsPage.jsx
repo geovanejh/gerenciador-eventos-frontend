@@ -10,14 +10,30 @@ import { Button } from "../components/Button/Button";
 import PeopleListItem from "../components/PeopleListItem/PeopleListItem";
 import { useEffect } from "react";
 import SearchField from "../components/Form/SearchField/SearchField";
+import { connect } from "react-redux";
+import { api } from "../api";
+import Loading from "../components/Loading/Loading";
 
-const TicketsPage = () => {
+const TicketsPage = ({ auth }) => {
+  const [loading, setLoading] = useState(false);
   const [searchField, setSearchField] = useState("");
   const [filteredPeople, setFilteredPeople] = useState([]);
   const navigate = useNavigate();
 
   const setup = async () => {
-    setFilteredPeople([{ nome: "XXXXXXXXXX", cpf: "XXXXXXXXXXX" }]);
+    getData();
+  };
+
+  const getData = async () => {
+    console.log(auth);
+    setLoading(true);
+    try {
+      const { data } = await api.get(`/api/ingressos/owner/${auth.user_id}`);
+      console.log("DATA::::", data);
+    } catch (error) {
+      //toast.error("Um erro aconteceu, tente novamente.");
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -27,6 +43,7 @@ const TicketsPage = () => {
   return (
     <>
       <Aside />
+      {loading && <Loading />}
       <DashboardContainer>
         <ListPage>
           <ListPageHeader title="Meus ingressos" user="Geovane Hartmann" />
@@ -67,4 +84,8 @@ const TicketsPage = () => {
   );
 };
 
-export default TicketsPage;
+const mapStateToProps = (state) => ({
+  auth: state.AuthReducer,
+});
+
+export default connect(mapStateToProps)(TicketsPage);

@@ -4,20 +4,22 @@ import { LandingPageContainer } from "../components/LandingPage/LandingPage.styl
 import { useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 
-const Event = ({ dispatch, auth }) => {
+const Event = ({ auth }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const compraIngresso = () => {
     if (auth.isLogged === false) {
       navigate("/login");
+    } else {
+      navigate("/purchase");
     }
   };
 
   return (
     <LandingPageContainer>
       <Header />
-      <button onClick={() => navigate("-1")}>voltar</button>
+      <button onClick={() => navigate(-1)}>voltar</button>
       <h1>EVENTO N° {id}</h1>
       <button onClick={() => compraIngresso()}>COMPRAR</button>
     </LandingPageContainer>

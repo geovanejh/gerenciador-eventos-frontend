@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { DashboardContainer } from "../components/Dashboard/Dashboard.styled";
 import Aside from "../components/Aside/Aside";
 import { useEffect } from "react";
-import { api } from "../api";
+import { connect } from "react-redux";
+import { isAuth } from "../store/actions/AuthAction";
 
-const Dashboard = () => {
+const Dashboard = ({ dispatch }) => {
   const navigate = useNavigate();
   const setup = async () => {
     try {
-      const { data } = await api.get("/eventos");
+      isAuth(dispatch);
     } catch (error) {
       alert("deu ruim");
     }
@@ -27,4 +28,8 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+const mapStateToProps = (state) => ({
+  auth: state.AuthReducer,
+});
+
+export default connect(mapStateToProps)(Dashboard);

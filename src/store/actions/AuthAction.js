@@ -59,21 +59,23 @@ export const isAuth = async (dispatch) => {
     try {
       const { data } = await api.get("/api/auth/check", {
         headers: {
-          Authorization: localStorage.getItem("token"),
+          Authorization: token,
         },
       });
-      api.defaults.headers.common["Authorization"] = data.token;
-      localStorage.setItem("token", data.token);
+      api.defaults.headers.common["Authorization"] = token;
+      localStorage.setItem("token", token);
       dispatch({
         type: "SET_LOGIN",
-        token: data.token,
+        token: token,
         isLogged: true,
+        user_id: data.user_id,
       });
     } catch (error) {
       dispatch({
         type: "SET_LOGIN",
         token: "",
         isLogged: false,
+        user_id: "",
       });
     }
   } else {
@@ -81,6 +83,7 @@ export const isAuth = async (dispatch) => {
       type: "SET_LOGIN",
       token: "",
       isLogged: false,
+      user_id: "",
     });
   }
 };

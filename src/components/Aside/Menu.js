@@ -4,7 +4,6 @@ import { BiCurrentLocation } from "react-icons/bi";
 import { MdLogout } from "react-icons/md";
 import { IoPerson } from "react-icons/io5";
 import { useLocation, useNavigate } from "react-router-dom";
-import { RiContactsFill } from "react-icons/ri";
 import { handleLogout } from "../../store/actions/AuthAction";
 import { connect } from "react-redux";
 

@@ -18,11 +18,11 @@ const NewEvent = () => {
       local: "Minha casa",
       horario_inicio: "20:00:00",
       horario_fim: "02:00:00",
-      organizador: "Eu mesmo",
+      organizador: 11,
     };
 
     try {
-      await api.post(`/eventos`, obj);
+      await api.post(`/api/eventos`, obj);
     } catch (error) {
       alert("deu ruim");
     }

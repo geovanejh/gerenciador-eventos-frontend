@@ -11,6 +11,8 @@ import EventsPage from "./pages/EventsPage";
 import NewEvent from "./pages/NewEvent";
 import Event from "./pages/Event";
 import Register from "./pages/Register";
+import Purchase from "./pages/Purchase";
+import Payment from "./pages/Payment";
 
 const Router = ({ dispatch, auth, loading }) => {
   useEffect(() => {
@@ -30,6 +32,8 @@ const Router = ({ dispatch, auth, loading }) => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/tickets" element={<TicketsPage />} />
             <Route path="/events" element={<EventsPage />} />
+            <Route path="/purchase" element={<Purchase />} />
+            <Route path="/payment" element={<Payment />} />
             <Route path="/events/create" element={<NewEvent />} />
             <Route path="*" element={<Navigate to="/dashboard" />} />
           </>
