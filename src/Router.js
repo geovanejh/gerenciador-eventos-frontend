@@ -9,6 +9,8 @@ import Dashboard from "./pages/Dashboard";
 import TicketsPage from "./pages/TicketsPage";
 import EventsPage from "./pages/EventsPage";
 import NewEvent from "./pages/NewEvent";
+import Event from "./pages/Event";
+import Register from "./pages/Register";
 
 const Router = ({ dispatch, auth, loading }) => {
   useEffect(() => {
@@ -21,6 +23,8 @@ const Router = ({ dispatch, auth, loading }) => {
   ) : (
     <div>
       <Routes>
+        <Route path="/evento/:id" element={<Event />} />
+        <Route path="/" element={<LandingPage />} />
         {auth.isLogged === true ? (
           <>
             <Route path="/dashboard" element={<Dashboard />} />
@@ -31,9 +35,9 @@ const Router = ({ dispatch, auth, loading }) => {
           </>
         ) : (
           <>
-            <Route path="/" element={<LandingPage />} />
             <Route path="*" element={<Navigate to="/" />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </>
         )}
       </Routes>

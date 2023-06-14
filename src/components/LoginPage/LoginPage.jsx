@@ -15,7 +15,7 @@ const LoginPage = ({ dispatch }) => {
   const formik = useFormik({
     initialValues: {
       email: "",
-      senha: "",
+      password: "",
     },
     onSubmit: (values) => {
       handleLogin(values, dispatch, navigate);
@@ -32,24 +32,24 @@ const LoginPage = ({ dispatch }) => {
         <h5>Digite seu login e senha abaixo</h5>
         <AuthForm onSubmit={formik.handleSubmit}>
           <FormField
-            id="login"
+            id="email"
             type="text"
-            label="Login"
+            label="email"
             onChange={formik.handleChange}
-            value={formik.values.login}
+            value={formik.values.email}
             onBlur={formik.handleBlur}
             formik={formik}
-            placeholder="Login"
+            placeholder="email"
           />
           <FormField
-            id="senha"
+            id="password"
             type="password"
-            label="Senha"
+            label="password"
             onChange={formik.handleChange}
-            value={formik.values.senha}
+            value={formik.values.password}
             onBlur={formik.handleBlur}
             formik={formik}
-            placeholder="Senha"
+            placeholder="password"
           />
           <Button primary type="submit" text="Login">
             Login
@@ -57,7 +57,7 @@ const LoginPage = ({ dispatch }) => {
         </AuthForm>
         <h5>
           Não possui uma conta?
-          <a href="#" onClick={() => navigate("/users")}>
+          <a href="#" onClick={() => navigate("/register")}>
             <span>Registre-se</span>
           </a>
         </h5>

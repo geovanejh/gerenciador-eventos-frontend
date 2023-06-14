@@ -1,16 +1,17 @@
 import { setLoading } from "./UtilsAction";
-import { mock } from "../../api";
+import { api } from "../../api";
 
 export const handleLogin = async (values, dispatch, navigate) => {
   setLoading(dispatch);
   try {
-    const { data } = await mock.post("/login", values);
-    mock.defaults.headers.common["Authorization"] = data.token;
+    const { data } = await api.post("/auth", values);
+    console.log(data.token);
+    api.defaults.headers.common["Authorization"] = data.token;
     localStorage.setItem("token", data.token);
 
     dispatch({
       type: "SET_LOGIN",
-      token: "TOKEN_TESTE",
+      token: data.token,
       isLogged: true,
     });
     navigate("/dashboard");
@@ -34,9 +35,20 @@ export const handleLogout = (dispatch, navigate) => {
 export const handleRegister = async (values, dispatch, navigate) => {
   setLoading(dispatch);
   try {
+    await api.post(`/usuarios`, values);
+    alert("foi");
+    //toast.success("Registrado com sucesso!");
     navigate("/login");
   } catch (error) {
-    console.log("não foi!");
+    alert("foi n kkkk", error);
+    //if (error.response.data.errors) {
+    //error.response.data.errors.map((e) => {
+    //toast.error(`Um erro aconteceu!
+    //${e}`);
+    //});
+    //} else {
+    //toast.error("Um erro aconteceu.");
+    //}
   }
   setLoading(dispatch);
 };
@@ -44,11 +56,26 @@ export const handleRegister = async (values, dispatch, navigate) => {
 export const isAuth = async (dispatch) => {
   const token = localStorage.getItem("token");
   if (token) {
-    dispatch({
-      type: "SET_LOGIN",
-      token: token,
-      isLogged: true,
-    });
+    try {
+      const { data } = await api.get("/api/auth/check", {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      });
+      api.defaults.headers.common["Authorization"] = data.token;
+      localStorage.setItem("token", data.token);
+      dispatch({
+        type: "SET_LOGIN",
+        token: data.token,
+        isLogged: true,
+      });
+    } catch (error) {
+      dispatch({
+        type: "SET_LOGIN",
+        token: "",
+        isLogged: false,
+      });
+    }
   } else {
     dispatch({
       type: "SET_LOGIN",

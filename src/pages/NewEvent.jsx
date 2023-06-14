@@ -6,8 +6,23 @@ import { api } from "../api";
 
 const NewEvent = () => {
   const handleCreate = async (person) => {
+    const obj = {
+      titulo: "Festa de Aniversário",
+      descricao: "Uma festa incrível para comemorar meu aniversário!",
+      categoria: "Festa",
+      modalidade: "Presencial",
+      valor_ingresso: 50.0,
+      numero_ingressos: 100,
+      quantidade_inscritos: 50,
+      data: "2023-06-10",
+      local: "Minha casa",
+      horario_inicio: "20:00:00",
+      horario_fim: "02:00:00",
+      organizador: "Eu mesmo",
+    };
+
     try {
-      await api.post(`/eventos`, person);
+      await api.post(`/eventos`, obj);
     } catch (error) {
       alert("deu ruim");
     }
@@ -37,18 +52,18 @@ const NewEvent = () => {
     <>
       <AuthForm onSubmit={formik.handleSubmit}>
         <FormField
-          id="Titulo"
+          id="titulo"
           type="text"
           label="Titulo"
           onChange={formik.handleChange}
           value={formik.values.titulo}
           onBlur={formik.handleBlur}
           formik={formik}
-          placeholder="Titulo"
+          placeholder="titulo"
         />
         <FormField
           id="descricao"
-          type="password"
+          type="text"
           label="descricao"
           onChange={formik.handleChange}
           value={formik.values.descricao}
@@ -58,7 +73,7 @@ const NewEvent = () => {
         />
         <FormField
           id="categoria"
-          type="password"
+          type="text"
           label="categoria"
           onChange={formik.handleChange}
           value={formik.values.categoria}
@@ -68,7 +83,7 @@ const NewEvent = () => {
         />
         <FormField
           id="modalidade"
-          type="password"
+          type="text"
           label="modalidade"
           onChange={formik.handleChange}
           value={formik.values.modalidade}
@@ -78,7 +93,7 @@ const NewEvent = () => {
         />
         <FormField
           id="valor_ingresso"
-          type="password"
+          type="text"
           label="valor_ingresso"
           onChange={formik.handleChange}
           value={formik.values.valor_ingresso}
@@ -88,7 +103,7 @@ const NewEvent = () => {
         />
         <FormField
           id="numero_ingressos"
-          type="password"
+          type="text"
           label="numero_ingressos"
           onChange={formik.handleChange}
           value={formik.values.numero_ingressos}
@@ -98,7 +113,7 @@ const NewEvent = () => {
         />
         <FormField
           id="quantidade_ingressos"
-          type="password"
+          type="text"
           label="quantidade_ingressos"
           onChange={formik.handleChange}
           value={formik.values.quantidade_ingressos}
@@ -108,7 +123,7 @@ const NewEvent = () => {
         />
         <FormField
           id="data"
-          type="password"
+          type="text"
           label="data"
           onChange={formik.handleChange}
           value={formik.values.data}
@@ -118,7 +133,7 @@ const NewEvent = () => {
         />
         <FormField
           id="local"
-          type="password"
+          type="text"
           label="local"
           onChange={formik.handleChange}
           value={formik.values.local}
@@ -128,7 +143,7 @@ const NewEvent = () => {
         />
         <FormField
           id="horario_inicio"
-          type="password"
+          type="text"
           label="horario_inicio"
           onChange={formik.handleChange}
           value={formik.values.horario_inicio}
@@ -138,7 +153,7 @@ const NewEvent = () => {
         />
         <FormField
           id="horario_fim"
-          type="password"
+          type="text"
           label="horario_fim"
           onChange={formik.handleChange}
           value={formik.values.horario_fim}
@@ -148,7 +163,7 @@ const NewEvent = () => {
         />
         <FormField
           id="organizador"
-          type="password"
+          type="text"
           label="organizador"
           onChange={formik.handleChange}
           value={formik.values.organizador}
