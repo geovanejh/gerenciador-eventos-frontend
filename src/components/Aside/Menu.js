@@ -2,7 +2,8 @@ import Item from "./Item";
 import { MenuNav } from "./Menu.styled";
 import { BiCurrentLocation } from "react-icons/bi";
 import { MdLogout } from "react-icons/md";
-import { IoPerson } from "react-icons/io5";
+import { FaTicketAlt } from "react-icons/fa";
+import { MdEvent } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router-dom";
 import { handleLogout } from "../../store/actions/AuthAction";
 import { connect } from "react-redux";
@@ -15,21 +16,21 @@ const Menu = ({ dispatch }) => {
     <MenuNav>
       <ul>
         <Item
-          name="Home"
-          url="/dashboard"
+          name="Início"
+          url="/"
           icon={<BiCurrentLocation />}
           active={caminho.includes("/dashboard") ? "active" : ""}
         />
         <Item
           name="Meus ingressos"
           url="/tickets"
-          icon={<IoPerson />}
+          icon={<FaTicketAlt />}
           active={caminho.includes("/tickets") ? "active" : ""}
         />
         <Item
           name="Meus eventos"
           url="/events"
-          icon={<IoPerson />}
+          icon={<MdEvent />}
           active={caminho.includes("/events") ? "active" : ""}
         />
         <li>

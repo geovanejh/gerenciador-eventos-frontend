@@ -11,10 +11,6 @@ const PeopleListItem = ({ person, handleDelete, handleEdit }) => {
   const date = moment(person.dataNascimento).format("DD/MM/YYYY");
   const navigate = useNavigate();
 
-  const formata = (cpf) => {
-    return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-  };
-
   const handleEndereco = (person) => {
     navigate(`/endereco/${person.idPessoa}`);
   };
@@ -23,13 +19,13 @@ const PeopleListItem = ({ person, handleDelete, handleEdit }) => {
     <ListItem layout="1.5fr 1.5fr 1fr 1fr 1fr 0.5fr">
       <div onClick={() => navigate(`/detalhes/${person.idPessoa}`)}>
         <img src={imgPlaceholder} alt="" />
-        <p>{person.nome}</p>
+        <p>{person.ID}</p>
       </div>
       <div onClick={() => navigate(`/detalhes/${person.idPessoa}`)}>
-        <p>{person.email}</p>
+        <p>{person.event_id}</p>
       </div>
       <div onClick={() => navigate(`/detalhes/${person.idPessoa}`)}>
-        <p>{formata(person.cpf)}</p>
+        <p>{person.status}</p>
       </div>
       <div onClick={() => navigate(`/detalhes/${person.idPessoa}`)}>
         <p>{date}</p>

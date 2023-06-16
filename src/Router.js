@@ -13,6 +13,7 @@ import Event from "./pages/Event";
 import Register from "./pages/Register";
 import Purchase from "./pages/Purchase";
 import Payment from "./pages/Payment";
+import EventDetail from "./pages/EventDetail";
 
 const Router = ({ dispatch, auth, loading }) => {
   useEffect(() => {
@@ -32,6 +33,7 @@ const Router = ({ dispatch, auth, loading }) => {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/tickets" element={<TicketsPage />} />
             <Route path="/events" element={<EventsPage />} />
+            <Route path="/events/:id" element={<EventDetail />} />
             <Route path="/purchase" element={<Purchase />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/events/create" element={<NewEvent />} />

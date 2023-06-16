@@ -7,7 +7,7 @@ export const ListPageContainer = styled.div`
   border: 1px solid #dfe0eb;
   border-radius: 8px;
 
-  > div {
+  > div:first-child {
     padding: 32px 32px 48px 32px;
     display: flex;
     align-items: center;

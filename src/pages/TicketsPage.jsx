@@ -6,7 +6,6 @@ import ListPageHeader from "../components/ListPages/ListPageHeader/ListPageHeade
 import { ListPageContainer } from "../components/ListPages/ListPageContainer";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../components/Button/Button";
 import PeopleListItem from "../components/PeopleListItem/PeopleListItem";
 import { useEffect } from "react";
 import SearchField from "../components/Form/SearchField/SearchField";
@@ -17,7 +16,7 @@ import Loading from "../components/Loading/Loading";
 const TicketsPage = ({ auth }) => {
   const [loading, setLoading] = useState(false);
   const [searchField, setSearchField] = useState("");
-  const [filteredPeople, setFilteredPeople] = useState([]);
+  const [filteredTickets, setFilteredTickets] = useState([]);
   const navigate = useNavigate();
 
   const setup = async () => {
@@ -29,7 +28,8 @@ const TicketsPage = ({ auth }) => {
     setLoading(true);
     try {
       const { data } = await api.get(`/api/ingressos/owner/${auth.user_id}`);
-      console.log("DATA::::", data);
+      setFilteredTickets(data);
+      console.log("Ingressos do user: ", data);
     } catch (error) {
       //toast.error("Um erro aconteceu, tente novamente.");
     }
@@ -51,29 +51,26 @@ const TicketsPage = ({ auth }) => {
             <div>
               <SearchField
                 value={searchField}
-                placeholder="Search..."
+                placeholder="Pesquisar"
                 onChange={(e) => {
                   setSearchField(e.target.value);
                 }}
               />
-              <Button primary onClick={() => navigate("form/")}>
-                Cadastrar
-              </Button>
             </div>
-            {filteredPeople.length < 1 ? (
-              <div>Nenhum usuário encontrado.</div>
+            {filteredTickets.length < 1 ? (
+              <div>Nenhum ingresso encontrado.</div>
             ) : (
               <ul>
                 <li>
-                  <h3>Título</h3>
-                  <h3>Data</h3>
-                  <h3>XXXXX</h3>
+                  <h3>id ing</h3>
+                  <h3>event_id</h3>
+                  <h3>status</h3>
                   <h3>DXXXX</h3>
                   <h3>XXXX</h3>
                   <h3></h3>
                 </li>
-                {filteredPeople.map((e) => (
-                  <PeopleListItem key={e.idPessoa} person={e} />
+                {filteredTickets.map((e, index) => (
+                  <PeopleListItem key={index} person={e} />
                 ))}
               </ul>
             )}

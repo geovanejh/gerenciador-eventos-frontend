@@ -3,11 +3,12 @@ import { AuthForm } from "../components/AuthPages/LoginForm";
 import FormField from "../components/Form/FormField/FormField";
 import { Button } from "../components/Button/Button";
 import { api } from "../api";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
-  const formataData = (values) => {
-    console.log(values);
+  const navigate = useNavigate();
 
+  const formataData = (values) => {
     const newValues = {
       cardholder: {
         firstname: values.firstname,
@@ -76,7 +77,6 @@ const Payment = () => {
       user_id: 1,
     },
     onSubmit: (values) => {
-      //console.log(values);
       handlePayment(formataData(values));
     },
   });
@@ -84,6 +84,7 @@ const Payment = () => {
   return (
     <>
       <AuthForm onSubmit={formik.handleSubmit}>
+        <button onClick={() => navigate(-1)}>voltar</button>
         <h1>Endereço</h1>
         <FormField
           id="rua"
@@ -196,6 +197,7 @@ const Payment = () => {
           onBlur={formik.handleBlur}
           formik={formik}
           placeholder="card_number"
+          autocomplete="cc-number"
         />
         <FormField
           id="expiration_month"
@@ -216,6 +218,7 @@ const Payment = () => {
           onBlur={formik.handleBlur}
           formik={formik}
           placeholder="expiration_year"
+          autocomplete="cc-exp"
         />
         <FormField
           id="security_code"
@@ -226,6 +229,7 @@ const Payment = () => {
           onBlur={formik.handleBlur}
           formik={formik}
           placeholder="security_code"
+          autocomplete="cc-csc"
         />
         <FormField
           id="installments"
