@@ -13,9 +13,9 @@ const Upcoming = () => {
   const setup = async () => {
     try {
       setLoading(true);
-      await new Promise((r) => setTimeout(r, 500));
       const { data } = await api.get("/eventos", {
         headers: {
+          "ngrok-skip-browser-warning": true,
           Authorization:
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlIiwidXNlcl9pZCI6NX0.Vqtd4yIHM_V0HezPu6t-aL9MZBZctjgVRaPHd5hWqN0",
         },

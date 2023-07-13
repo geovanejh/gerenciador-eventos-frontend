@@ -32,10 +32,6 @@ export const ListItem = styled.li`
     border-radius: 100%;
   }
 
-  > div:last-child {
-    justify-content: end;
-  }
-
   button {
     padding: 3px 5px;
 

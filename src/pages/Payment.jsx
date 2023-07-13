@@ -33,9 +33,9 @@ const Payment = () => {
       title: values.title,
       description: values.description,
       payment_method_id: values.payment_method_id,
-      quantity_ing: 1,
-      event_id: 1,
-      user_id: 1,
+      quantity_ing: 3,
+      event_id: 7,
+      user_id: 2,
     };
     console.log(newValues);
     return newValues;

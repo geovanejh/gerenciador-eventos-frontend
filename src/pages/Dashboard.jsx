@@ -1,7 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { DashboardContainer } from "../components/Dashboard/Dashboard.styled";
-import Aside from "../components/Aside/Aside";
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { isAuth } from "../store/actions/AuthAction";
@@ -20,12 +18,7 @@ const Dashboard = ({ dispatch }) => {
     setup();
   }, []);
 
-  return (
-    <>
-      <Aside />
-      <DashboardContainer>PÁGINA INICIAL</DashboardContainer>
-    </>
-  );
+  return <>Página inicial</>;
 };
 
 const mapStateToProps = (state) => ({
