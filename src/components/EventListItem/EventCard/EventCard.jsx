@@ -6,7 +6,9 @@ const EventCard = ({ event }) => {
   const navigate = useNavigate();
 
   return (
-    <EventCardContainer onClick={() => navigate(`/events/${event.ID}`)}>
+    <EventCardContainer
+      onClick={() => navigate(`/dashboard/events/${event.ID}`)}
+    >
       <img
         src="https://t3.ftcdn.net/jpg/02/87/35/70/360_F_287357045_Ib0oYOxhotdjOEHi0vkggpZTQCsz0r19.jpg"
         alt=""

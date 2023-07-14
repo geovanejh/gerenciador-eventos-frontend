@@ -12,16 +12,19 @@ import { connect } from "react-redux";
 import { Button } from "../components/Button/Button";
 
 const EventsPage = ({ auth }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [searchField, setSearchField] = useState("");
   const [events, setEvents] = useState([]);
   const [inactiveEvents, setInactiveEvents] = useState([]);
   const navigate = useNavigate();
 
   const getData = async () => {
-    const { data } = await api.get(`/api/eventos/owner/${auth.user_id}`);
-    console.log(data);
-    setEvents(data);
+    setLoading(true);
+    try {
+      const { data } = await api.get(`/api/eventos/owner/${auth.user_id}`);
+      setEvents(data);
+    } catch (error) {}
+    setLoading(false);
   };
 
   const setup = async () => {
@@ -46,7 +49,10 @@ const EventsPage = ({ auth }) => {
                 setSearchField(e.target.value);
               }}
             />
-            <Button primary onClick={() => navigate("/events/create")}>
+            <Button
+              primary
+              onClick={() => navigate("/dashboard/events/create")}
+            >
               Adicionar
             </Button>
           </div>

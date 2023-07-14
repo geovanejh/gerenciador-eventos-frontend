@@ -1,7 +1,7 @@
+import Logotipo from "../../../../assets/Meu projeto.png";
 import Logo from "../Logo";
 import SearchBar from "../SearchBar/SearchBar";
 import { NavContainer } from "./Nav.styled";
-import Logotipo from "../../../../assets/Meu projeto.png";
 
 const Nav = () => {
   return (

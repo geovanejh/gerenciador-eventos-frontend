@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import { api } from "../../api";
-import { Ticket, TicketContainer } from "./TicketDetails.styled";
-import Loading from "../Loading/Loading";
-import { connect } from "react-redux";
 import QRCode from "react-qr-code";
-import { Button } from "../Button/Button";
+import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../api";
+import { Button } from "../Button/Button";
 import { ListPage } from "../ListPages/ListPage";
-import ListPageHeader from "../ListPages/ListPageHeader/ListPageHeader";
 import { PageHeader } from "../ListPages/ListPageHeader/ListPageHeader.styled";
+import Loading from "../Loading/Loading";
+import { Ticket, TicketContainer } from "./TicketDetails.styled";
 
-const TicketDetails = ({ id, auth }) => {
+const TicketDetails = ({ id }) => {
   const [event, setEvent] = useState();
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -50,16 +49,18 @@ const TicketDetails = ({ id, auth }) => {
           <Ticket>
             <div>
               <div>
-                <h1>{event.evento.titulo}- Uma baita festa!</h1>
+                <h1>
+                  {event?.evento.titulo} - {event?.evento.descricao}
+                </h1>
               </div>
               <div>
-                <b>Identificador:</b> {event.ID}
+                <b>Identificador:</b> {event?.id}
               </div>
               <div>
-                <b>Preço:</b> R${event.valor}
+                <b>Valor:</b> R${event?.valor}
               </div>
               <div>
-                <b>Tipo de evento:</b> Presencial
+                <b>Tipo de evento:</b> {event?.evento.modalidade}
               </div>
             </div>
             <div></div>

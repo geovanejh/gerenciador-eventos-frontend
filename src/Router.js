@@ -1,23 +1,22 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { isAuth } from "./store/actions/AuthAction";
-import Login from "./pages/Login";
-import LandingPage from "./pages/LandingPage";
-import Loading from "./components/Loading/Loading";
-import Dashboard from "./pages/Dashboard";
-import TicketsPage from "./pages/TicketsPage";
-import EventsPage from "./pages/EventsPage";
-import NewEvent from "./pages/NewEvent";
-import Event from "./pages/Event";
-import Register from "./pages/Register";
-import Purchase from "./pages/Purchase";
-import Payment from "./pages/Payment";
-import EventDetail from "./pages/EventDetail";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { MainContent, RouterContainer } from "./Routers.styled";
 import Aside from "./components/Aside/Aside";
-import { useLocation } from "react-router-dom";
+import Loading from "./components/Loading/Loading";
+import Dashboard from "./pages/Dashboard";
+import Event from "./pages/Event";
+import EventDetail from "./pages/EventDetail";
+import EventsPage from "./pages/EventsPage";
+import LandingPage from "./pages/LandingPage";
+import Login from "./pages/Login";
+import NewEvent from "./pages/NewEvent";
+import Payment from "./pages/Payment";
+import Register from "./pages/Register";
 import TicketDetail from "./pages/TicketDetail";
+import TicketsPage from "./pages/TicketsPage";
+import { isAuth } from "./store/actions/AuthAction";
+import PurchasePage from "./pages/PurchasePage";
 
 const Router = ({ dispatch, auth, loading }) => {
   const location = useLocation();
@@ -26,27 +25,28 @@ const Router = ({ dispatch, auth, loading }) => {
     isAuth(dispatch);
     console.log("location: ", location);
   }, []);
-  console.log("isLoading: ", loading);
 
   return loading === true ? (
     <Loading />
   ) : (
     <RouterContainer>
-      {location.pathname !== "/" && <Aside />}
-      <MainContent auth={auth.isLogged}>
+      {location.pathname.includes("/dashboard") && <Aside />}
+      <MainContent
+        auth={auth.isLogged}
+        pathname={location.pathname.includes("/dashboard")}
+      >
         <Routes>
           <Route path="/evento/:id" element={<Event />} />
           <Route path="/" element={<LandingPage />} />
           {auth.isLogged === true ? (
             <>
               <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/tickets" element={<TicketsPage />} />
-              <Route path="/tickets/:id" element={<TicketDetail />} />
-              <Route path="/events" element={<EventsPage />} />
-              <Route path="/events/:id" element={<EventDetail />} />
-              <Route path="/purchase" element={<Purchase />} />
-              <Route path="/payment" element={<Payment />} />
-              <Route path="/events/create" element={<NewEvent />} />
+              <Route path="/dashboard/tickets" element={<TicketsPage />} />
+              <Route path="/dashboard/tickets/:id" element={<TicketDetail />} />
+              <Route path="/dashboard/events" element={<EventsPage />} />
+              <Route path="/dashboard/events/:id" element={<EventDetail />} />
+              <Route path="/purchase/:id" element={<PurchasePage />} />
+              <Route path="/dashboard/events/create" element={<NewEvent />} />
               <Route path="*" element={<Navigate to="/dashboard" />} />
             </>
           ) : (

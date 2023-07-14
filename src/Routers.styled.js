@@ -5,6 +5,9 @@ export const RouterContainer = styled.div`
 `;
 
 export const MainContent = styled.div`
-  margin-left: ${(props) => (props.auth ? "255px" : 0)};
+  margin-left: ${(props) => (props.pathname ? "255px" : 0)};
   width: 100%;
+  background-color: rgb(247, 248, 252);
+  height: 100%;
+  min-height: 100vh;
 `;

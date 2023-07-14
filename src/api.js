@@ -5,5 +5,6 @@ export const mock = axios.create({
 });
 
 export const api = axios.create({
-  baseURL: "https://be05-201-37-71-89.ngrok-free.app",
+  //baseURL: "https://8a5ef201986ae3.lhr.life/",
+  baseURL: "http://localhost:5000",
 });

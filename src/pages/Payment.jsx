@@ -34,7 +34,7 @@ const Payment = () => {
       description: values.description,
       payment_method_id: values.payment_method_id,
       quantity_ing: 3,
-      event_id: 7,
+      event_id: 25,
       user_id: 2,
     };
     console.log(newValues);
@@ -43,8 +43,9 @@ const Payment = () => {
 
   const handlePayment = async (values) => {
     try {
-      const data = await api.post(`/api/ingressos`, values);
-      console.log(data);
+      const { data } = await api.post(`/api/ingressos`, values);
+      alert("compra bem sucedida");
+      navigate("/dashboard/tickets");
     } catch (error) {
       alert(error);
       console.log(error);
@@ -86,66 +87,6 @@ const Payment = () => {
       <AuthForm onSubmit={formik.handleSubmit}>
         <button onClick={() => navigate(-1)}>voltar</button>
         <h1>Endereço</h1>
-        <FormField
-          id="rua"
-          type="text"
-          label="Rua"
-          onChange={formik.handleChange}
-          value={formik.values.rua}
-          onBlur={formik.handleBlur}
-          formik={formik}
-          placeholder="Rua"
-        />
-        <FormField
-          id="numero"
-          type="text"
-          label="Número"
-          onChange={formik.handleChange}
-          value={formik.values.numero}
-          onBlur={formik.handleBlur}
-          formik={formik}
-          placeholder="Número"
-        />
-        <FormField
-          id="zip_code"
-          type="text"
-          label="zip_code"
-          onChange={formik.handleChange}
-          value={formik.values.zip_code}
-          onBlur={formik.handleBlur}
-          formik={formik}
-          placeholder="zip_code"
-        />
-        <FormField
-          id="city"
-          type="text"
-          label="city"
-          onChange={formik.handleChange}
-          value={formik.values.city}
-          onBlur={formik.handleBlur}
-          formik={formik}
-          placeholder="city"
-        />
-        <FormField
-          id="state"
-          type="text"
-          label="state"
-          onChange={formik.handleChange}
-          value={formik.values.state}
-          onBlur={formik.handleBlur}
-          formik={formik}
-          placeholder="state"
-        />
-        <FormField
-          id="country"
-          type="text"
-          label="country"
-          onChange={formik.handleChange}
-          value={formik.values.country}
-          onBlur={formik.handleBlur}
-          formik={formik}
-          placeholder="country"
-        />
         <h1>Identificação</h1>
         <FormField
           id="firstname"

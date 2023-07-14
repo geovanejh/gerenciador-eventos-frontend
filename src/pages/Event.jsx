@@ -1,41 +1,50 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { api } from "../api";
 import Header from "../components/LandingPage/Header/Header/Header";
 import { LandingPageContainer } from "../components/LandingPage/LandingPage.styled";
-import { useNavigate, useParams } from "react-router-dom";
-import { connect } from "react-redux";
-import { api } from "../api";
+import Loading from "../components/Loading/Loading";
+import EventPage from "../components/Purchase/EventP/EventPage";
 import { handleGetTicketInfo } from "../store/actions/PurchaseAction";
 
 const Event = ({ dispatch, auth }) => {
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
-  const [selectedEvent, setSelectedEvent] = useState();
-
-  const compraIngresso = () => {
-    if (auth.isLogged === false) {
-      navigate("/login");
-    } else {
-      handleGetTicketInfo(dispatch, id, auth.user_id);
-      navigate("/purchase");
-    }
-  };
+  const [event, setEvent] = useState();
 
   const setup = async () => {
-    const { data } = await api.get(`/api/eventos/${id}`);
-    setSelectedEvent(data);
+    try {
+      setLoading(true);
+      const { data } = await api.get(`/api/eventos/${id}`);
+      setEvent(data);
+      console.log("data: ", data);
+    } catch (error) {
+      alert("erro na req de evento");
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
     setup();
   }, []);
 
-  return (
+  const compraIngresso = () => {
+    if (auth.isLogged === false) {
+      navigate("/login");
+    } else {
+      handleGetTicketInfo(dispatch, id, auth.user_id);
+      navigate(`/purchase/${id}`);
+    }
+  };
+
+  return loading ? (
+    <Loading />
+  ) : (
     <LandingPageContainer>
       <Header />
-      <button onClick={() => navigate(-1)}>voltar</button>
-      <h1>EVENTO N° {id}</h1>
-      <p></p>
-      <button onClick={() => compraIngresso()}>COMPRAR</button>
+      <EventPage compraIngresso={compraIngresso} />
     </LandingPageContainer>
   );
 };

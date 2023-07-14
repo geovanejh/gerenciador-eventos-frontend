@@ -6,5 +6,6 @@ export const LogoContainer = styled.div`
   margin-bottom: 62px;
   img {
     height: 32px;
+    fill: red;
   }
 `;

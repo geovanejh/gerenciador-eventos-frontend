@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 const Menu = ({ dispatch }) => {
   const navigate = useNavigate();
   const { pathname: caminho } = useLocation();
+  console.log(caminho);
 
   return (
     <MenuNav>
@@ -19,17 +20,17 @@ const Menu = ({ dispatch }) => {
           name="Início"
           url="/"
           icon={<BiCurrentLocation />}
-          active={caminho.includes("/dashboard") ? "active" : ""}
+          active={caminho === "/dashboard" ? "active" : ""}
         />
         <Item
           name="Meus ingressos"
-          url="/tickets"
+          url="/dashboard/tickets"
           icon={<FaTicketAlt />}
           active={caminho.includes("/tickets") ? "active" : ""}
         />
         <Item
           name="Meus eventos"
-          url="/events"
+          url="/dashboard/events"
           icon={<MdEvent />}
           active={caminho.includes("/events") ? "active" : ""}
         />

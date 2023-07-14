@@ -1,9 +1,8 @@
 import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../../Button/Button";
 import Nav from "../Nav/Nav";
 import { HeaderContainer } from "./Header.styled";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const Header = ({ dispatch, auth }) => {
   const navigate = useNavigate();

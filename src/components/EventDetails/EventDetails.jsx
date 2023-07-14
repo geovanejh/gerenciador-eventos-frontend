@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { api } from "../../api";
-import Loading from "../Loading/Loading";
-import { ListPage } from "../ListPages/ListPage";
-import ListPageHeader from "../ListPages/ListPageHeader/ListPageHeader";
-import { ListPageContainer } from "../ListPages/ListPageContainer";
 import { useNavigate } from "react-router-dom";
+import { api } from "../../api";
+import { ListPage } from "../ListPages/ListPage";
+import { ListPageContainer } from "../ListPages/ListPageContainer";
+import ListPageHeader from "../ListPages/ListPageHeader/ListPageHeader";
+import Loading from "../Loading/Loading";
 
 const EventDetails = ({ id }) => {
   const [event, setEvent] = useState();
@@ -39,16 +39,16 @@ const EventDetails = ({ id }) => {
         <div>
           <h2>{event?.titulo}</h2>
         </div>
-        <p>{event.descricao}</p>
+        <p>{event?.descricao}</p>
         <p>
-          Ingressos vendidos: {event.quantidade_inscritos}/
-          {event.numero_ingressos + event.quantidade_inscritos}
+          Ingressos vendidos: {event?.quantidade_inscritos}/
+          {event?.numero_ingressos + event?.quantidade_inscritos}
         </p>
-        <p>Local: {event.local}</p>
+        <p>Local: {event?.local}</p>
         <p>
-          Horário: {event.horario_inicio} - {event.horario_fim}
+          Horário: {event?.horario_inicio} - {event?.horario_fim}
         </p>
-        <p>Valor do ingresso: R${event.valor_ingresso}</p>
+        <p>Valor do ingresso: R${event?.valor_ingresso}</p>
       </ListPageContainer>
     </ListPage>
   );

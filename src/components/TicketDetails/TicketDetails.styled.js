@@ -30,7 +30,7 @@ export const Ticket = styled.div`
   }
 
   > div:nth-child(2) {
-    width: 4px;
+    width: 1px;
     background-color: rgb(223, 224, 235);
   }
 
@@ -40,5 +40,10 @@ export const Ticket = styled.div`
 
   svg {
     height: 100%;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 12px;
   }
 `;
