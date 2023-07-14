@@ -44,7 +44,7 @@ const Event = ({ dispatch, auth }) => {
   ) : (
     <LandingPageContainer>
       <Header />
-      <EventPage compraIngresso={compraIngresso} />
+      <EventPage event={event} compraIngresso={compraIngresso} />
     </LandingPageContainer>
   );
 };

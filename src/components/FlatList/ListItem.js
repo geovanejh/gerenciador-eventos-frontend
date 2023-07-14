@@ -31,13 +31,4 @@ export const ListItem = styled.li`
     width: 44px;
     border-radius: 100%;
   }
-
-  button {
-    padding: 3px 5px;
-
-    :hover {
-      background-color: #dfe0eb;
-      border-radius: 10px;
-    }
-  }
 `;
