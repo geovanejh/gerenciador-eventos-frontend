@@ -25,7 +25,8 @@ const RegisterPage = ({ dispatch }) => {
     initialValues: {
       email: "",
       password: "",
-      name: "",
+      nome: "",
+      sobrenome: "",
       cpf: "",
       rg: "",
       phone: "",
@@ -73,14 +74,24 @@ const RegisterPage = ({ dispatch }) => {
             placeholder="password"
           />
           <FormField
-            id="name"
+            id="nome"
             type="text"
-            label="name"
+            label="nome"
             onChange={formik.handleChange}
-            value={formik.values.name}
+            value={formik.values.nome}
             onBlur={formik.handleBlur}
             formik={formik}
-            placeholder="name"
+            placeholder="nome"
+          />
+          <FormField
+            id="sobrenome"
+            type="text"
+            label="sobrenome"
+            onChange={formik.handleChange}
+            value={formik.values.sobrenome}
+            onBlur={formik.handleBlur}
+            formik={formik}
+            placeholder="sobrenome"
           />
           <FormField
             id="cpf"

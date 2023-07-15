@@ -7,6 +7,7 @@ export const UpcomingContainer = styled.div`
   border: 1px solid #dfe0eb;
   border-radius: 8px;
   margin-top: 36px;
+  margin-bottom: 36px;
 
   > div:first-child {
     padding: 32px 32px 48px 32px;
