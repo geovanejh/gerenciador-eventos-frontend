@@ -9,7 +9,7 @@ import { PageHeader } from "../ListPages/ListPageHeader/ListPageHeader.styled";
 import Loading from "../Loading/Loading";
 import { Ticket, TicketContainer } from "./TicketDetails.styled";
 
-const TicketDetails = ({ id }) => {
+const TicketDetails = ({ id, auth }) => {
   const [event, setEvent] = useState();
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -65,7 +65,9 @@ const TicketDetails = ({ id }) => {
             </div>
             <div></div>
             <div>
-              <QRCode value="hey"></QRCode>
+              <QRCode
+                value={`https://3e119f9eeea1f2.lhr.life/api/ingressos/check/${id}?event_id=${event?.event_id}&user_id=${auth.user_id}`}
+              ></QRCode>
             </div>
           </Ticket>
         </TicketContainer>

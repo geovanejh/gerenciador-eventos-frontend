@@ -32,7 +32,7 @@ const Upcoming = ({ auth }) => {
       setEventos(data);
       console.log("data: ", data);
     } catch (error) {
-      alert("deu ruim");
+      alert(error);
     }
     setLoading(false);
   };

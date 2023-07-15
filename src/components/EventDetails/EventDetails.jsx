@@ -17,7 +17,7 @@ const EventDetails = ({ id }) => {
       const { data } = await api.get(`/api/eventos/${id}`);
       setEvent(data);
     } catch (error) {
-      alert("deu ruim");
+      alert(error);
     }
     setLoading(false);
   };

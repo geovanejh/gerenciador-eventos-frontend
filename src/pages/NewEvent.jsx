@@ -18,12 +18,10 @@ const NewEvent = ({ auth }) => {
       organizador: auth.user_id,
     };
 
-    console.log("data: ", data);
-
     try {
-      await api.post(`/api/eventos`, data);
+      const { data } = await api.post(`/api/eventos`, data);
     } catch (error) {
-      alert("deu ruim");
+      alert(error);
     }
   };
 

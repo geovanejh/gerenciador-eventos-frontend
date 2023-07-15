@@ -39,6 +39,7 @@ const Router = ({ dispatch, auth, loading }) => {
         <Routes>
           <Route path="/evento/:id" element={<Event />} />
           <Route path="/" element={<LandingPage />} />
+          <Route path="/QRCODE" element={<QrcodePage />} />
           {auth.isLogged === true ? (
             <>
               <Route path="/dashboard" element={<Dashboard />} />
@@ -48,7 +49,6 @@ const Router = ({ dispatch, auth, loading }) => {
               <Route path="/dashboard/events/:id" element={<EventDetail />} />
               <Route path="/purchase/:id" element={<PurchasePage />} />
               <Route path="/dashboard/events/create" element={<NewEvent />} />
-              <Route path="/QRCODE" element={<QrcodePage />} />
               <Route path="*" element={<Navigate to="/dashboard" />} />
             </>
           ) : (
