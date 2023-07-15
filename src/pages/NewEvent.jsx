@@ -11,7 +11,7 @@ const NewEvent = ({ auth }) => {
   const [page, setPage] = useState(1);
 
   const handleCreate = async (values) => {
-    const data = {
+    const dados = {
       ...values,
       valor_ingresso: parseInt(values.valor_ingresso),
       numero_ingressos: parseInt(values.numero_ingressos),
@@ -19,9 +19,9 @@ const NewEvent = ({ auth }) => {
     };
 
     try {
-      const { data } = await api.post(`/api/eventos`, data);
+      const { data } = await api.post(`/api/eventos`, dados);
     } catch (error) {
-      alert(error);
+      alert("deu ruim");
     }
   };
 
