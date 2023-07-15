@@ -36,22 +36,22 @@ const LoginPage = ({ dispatch }) => {
           <FormField
             id="email"
             type="text"
-            label="email"
+            label="e-mail"
             onChange={formik.handleChange}
             value={formik.values.email}
             onBlur={formik.handleBlur}
             formik={formik}
-            placeholder="email"
+            placeholder="E-mail"
           />
           <FormField
             id="password"
             type="password"
-            label="password"
+            label="Senha"
             onChange={formik.handleChange}
             value={formik.values.password}
             onBlur={formik.handleBlur}
             formik={formik}
-            placeholder="password"
+            placeholder="Senha"
           />
           <Button primary type="submit" text="Login">
             Login

@@ -36,11 +36,7 @@ const EventDetails = ({ id }) => {
     <Loading />
   ) : (
     <ListPage>
-      <ListPageHeader
-        title="Meus eventos"
-        user="Geovane Hartmann"
-        onClick={() => navigate(-1)}
-      />
+      <ListPageHeader title="Meus eventos" onClick={() => navigate(-1)} />
       <ListPageContainer>
         <EventDetailContainer>
           <div>

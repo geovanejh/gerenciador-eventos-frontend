@@ -42,7 +42,7 @@ const TicketsPage = ({ auth }) => {
     <>
       {loading && <Loading />}
       <ListPage>
-        <ListPageHeader title="Meus ingressos" user="Geovane Hartmann" />
+        <ListPageHeader title="Meus ingressos" />
         <ListPageContainer layout="1fr 1.5fr 1fr 1fr 0.5fr">
           <div>
             <SearchField

@@ -6,12 +6,12 @@ const RegisterPageOne = ({ formik }) => {
       <FormField
         id="email"
         type="text"
-        label="email"
+        label="e-mail"
         onChange={formik.handleChange}
         value={formik.values.email}
         onBlur={formik.handleBlur}
         formik={formik}
-        placeholder="email"
+        placeholder="e-mail"
       />
       <FormField
         id="password"

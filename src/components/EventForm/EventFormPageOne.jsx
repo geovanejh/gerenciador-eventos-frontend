@@ -1,27 +1,34 @@
 import FormField from "../Form/FormField/FormField";
+import SelectField from "../Form/SelectField/SelectField";
 
 const EventFormPageOne = ({ formik }) => {
+  const options = [
+    { id: undefined, nome: undefined },
+    { id: "online", nome: "online" },
+    { id: "Presencial", nome: "Presencial" },
+  ];
+
   return (
     <>
       <FormField
         id="titulo"
         type="text"
-        label="Titulo"
+        label="Título"
         onChange={formik.handleChange}
         value={formik.values.titulo}
         onBlur={formik.handleBlur}
         formik={formik}
-        placeholder="titulo"
+        placeholder="Título"
       />
       <FormField
         id="descricao"
         type="text"
-        label="descricao"
+        label="Descrição"
         onChange={formik.handleChange}
         value={formik.values.descricao}
         onBlur={formik.handleBlur}
         formik={formik}
-        placeholder="descricao"
+        placeholder="Descrição"
       />
       <FormField
         id="categoria"
@@ -33,15 +40,13 @@ const EventFormPageOne = ({ formik }) => {
         formik={formik}
         placeholder="categoria"
       />
-      <FormField
+      <SelectField
+        options={options}
+        label="Modalidade"
         id="modalidade"
-        type="text"
-        label="modalidade"
-        onChange={formik.handleChange}
         value={formik.values.modalidade}
-        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
         formik={formik}
-        placeholder="modalidade"
       />
     </>
   );

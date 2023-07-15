@@ -39,7 +39,7 @@ const EventsPage = ({ auth }) => {
     <>
       {loading && <Loading />}
       <ListPage>
-        <ListPageHeader title="Meus eventos" user="Geovane Hartmann" />
+        <ListPageHeader title="Meus eventos" />
         <ListPageContainer layout="1.5fr 1.5fr 1fr 1fr 1fr 0.5fr">
           <div>
             <SearchField

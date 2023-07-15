@@ -67,7 +67,7 @@ const TicketDetails = ({ id, auth }) => {
             <div>
               {event?.evento.modalidade !== "online" ? (
                 <QRCode
-                  value={`https://a5263ed537c56e.lhr.life/api/ingressos/check/${id}?event_id=${event?.event_id}&user_id=${auth.user_id}`}
+                  value={`localhost/api/ingressos/check/${id}?event_id=${event?.event_id}&user_id=${auth.user_id}`}
                 ></QRCode>
               ) : (
                 <div>
