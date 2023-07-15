@@ -18,6 +18,10 @@ export const PurchaseContainer = styled.div`
     height: 100%;
     align-items: center;
 
+    h2 {
+      text-align: center;
+    }
+
     > div {
       width: 100%;
       display: flex;

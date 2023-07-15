@@ -98,9 +98,9 @@ const Purchase = ({ auth }) => {
       title: "Ingresso",
       description: "Simulação master.",
       payment_method_id: "",
-      quantity_ing: 1,
       event_id: 1,
       user_id: 1,
+      qtd_ingressos: 0,
     },
     onSubmit: (values) => {
       handlePayment(formataData(values));
@@ -116,8 +116,9 @@ const Purchase = ({ auth }) => {
       </Button>
       <div>
         <div>
-          <h2>{event?.titulo}</h2>
-          <h3>{event?.descricao}</h3>
+          <h1>{event?.titulo}</h1>
+          <h2>{event?.descricao}</h2>
+          {event?.modalide == "Presencial" && <h2>{event?.local}</h2>}
         </div>
         {stage === 1 && (
           <SelectScreen

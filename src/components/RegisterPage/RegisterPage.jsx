@@ -44,7 +44,9 @@ const RegisterPage = ({ dispatch }) => {
   return (
     <AuthPage>
       <AuthContainer>
-        <Button onClick={() => navigate(-1)}> Voltar </Button>
+        <Button primary onClick={() => navigate("/login")}>
+          Voltar
+        </Button>
         <Logo src={Logoimg} height="48px" />
         <h3>4Pass</h3>
         <h2>Entre na sua conta </h2>

@@ -14,7 +14,7 @@ export const handleLogin = async (values, dispatch, navigate) => {
       token: data.token,
       isLogged: true,
     });
-    navigate("/dashboard");
+    navigate("/dashboard/tickets");
   } catch (error) {
     console.log("não deu!");
   }

@@ -23,7 +23,9 @@ const TicketsPage = ({ auth }) => {
     setLoading(true);
     try {
       const { data } = await api.get(`/api/ingressos/owner/${auth.user_id}`);
-      setFilteredTickets(data);
+      if (data !== null) {
+        setFilteredTickets(data);
+      }
       console.log("Ingressos do user: ", data);
     } catch (error) {
       //toast.error("Um erro aconteceu, tente novamente.");
@@ -50,7 +52,7 @@ const TicketsPage = ({ auth }) => {
               }}
             />
           </div>
-          {filteredTickets.length < 1 ? (
+          {filteredTickets?.length < 1 ? (
             <div>Nenhum ingresso encontrado.</div>
           ) : (
             <ul>
@@ -60,7 +62,7 @@ const TicketsPage = ({ auth }) => {
                 <h3>Compra</h3>
                 <h3>Valor total</h3>
               </li>
-              {filteredTickets.map((e, index) => (
+              {filteredTickets?.map((e, index) => (
                 <PeopleListItem key={index} event={e} />
               ))}
             </ul>

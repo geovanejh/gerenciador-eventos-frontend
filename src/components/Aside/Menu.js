@@ -17,12 +17,6 @@ const Menu = ({ dispatch }) => {
     <MenuNav>
       <ul>
         <Item
-          name="Início"
-          url="/"
-          icon={<BiCurrentLocation />}
-          active={caminho === "/dashboard" ? "active" : ""}
-        />
-        <Item
           name="Meus ingressos"
           url="/dashboard/tickets"
           icon={<FaTicketAlt />}
@@ -33,6 +27,12 @@ const Menu = ({ dispatch }) => {
           url="/dashboard/events"
           icon={<MdEvent />}
           active={caminho.includes("/events") ? "active" : ""}
+        />
+        <Item
+          name="Scanear QRCODE"
+          url="/QRCODE"
+          icon={<MdEvent />}
+          active={caminho.includes("/QRCODE") ? "active" : ""}
         />
         <li>
           <button onClick={() => handleLogout(dispatch, navigate)}>

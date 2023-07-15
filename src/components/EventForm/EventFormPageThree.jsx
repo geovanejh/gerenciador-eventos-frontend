@@ -44,16 +44,6 @@ const EventFormPageThree = ({ formik }) => {
         formik={formik}
         placeholder="horario_fim"
       />
-      <Button
-        primary
-        text="Login"
-        onClick={(e) => {
-          e.preventDefault();
-          formik.submitForm();
-        }}
-      >
-        SUBMIT
-      </Button>
     </>
   );
 };

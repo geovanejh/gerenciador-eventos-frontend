@@ -15,7 +15,7 @@ const Header = ({ dispatch, auth }) => {
           Acesse sua conta
         </Button>
       ) : (
-        <Button primary onClick={() => navigate("/dashboard")}>
+        <Button primary onClick={() => navigate("/dashboard/tickets")}>
           Painel
         </Button>
       )}

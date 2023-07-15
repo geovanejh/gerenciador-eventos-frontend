@@ -56,8 +56,8 @@ const EventsPage = ({ auth }) => {
               Adicionar
             </Button>
           </div>
-          {events.length < 1 ? (
-            <div>Nenhum evento encontrado.</div>
+          {events?.length < 1 ? (
+            <h3>Nenhum evento encontrado.</h3>
           ) : (
             <CardPageContainer>
               {events.map((e, i) => (

@@ -6,5 +6,5 @@ export const mock = axios.create({
 
 export const api = axios.create({
   //baseURL: "https://8a5ef201986ae3.lhr.life/",
-  baseURL: "http://localhost:5000",
+  baseURL: "https://776dccfd78b84f.lhr.life/",
 });

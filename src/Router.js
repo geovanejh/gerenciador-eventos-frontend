@@ -17,6 +17,7 @@ import TicketDetail from "./pages/TicketDetail";
 import TicketsPage from "./pages/TicketsPage";
 import { isAuth } from "./store/actions/AuthAction";
 import PurchasePage from "./pages/PurchasePage";
+import QrcodePage from "./pages/QrcodePage";
 
 const Router = ({ dispatch, auth, loading }) => {
   const location = useLocation();
@@ -47,6 +48,7 @@ const Router = ({ dispatch, auth, loading }) => {
               <Route path="/dashboard/events/:id" element={<EventDetail />} />
               <Route path="/purchase/:id" element={<PurchasePage />} />
               <Route path="/dashboard/events/create" element={<NewEvent />} />
+              <Route path="/QRCODE" element={<QrcodePage />} />
               <Route path="*" element={<Navigate to="/dashboard" />} />
             </>
           ) : (
