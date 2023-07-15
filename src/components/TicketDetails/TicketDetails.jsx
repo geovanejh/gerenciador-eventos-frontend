@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import QRCode from "react-qr-code";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../api";
