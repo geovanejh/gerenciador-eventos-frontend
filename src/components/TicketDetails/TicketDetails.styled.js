@@ -27,6 +27,11 @@ export const Ticket = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    max-width: 80vw;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   > div:nth-child(2) {

@@ -1,0 +1,70 @@
+import FormField from "../Form/FormField/FormField";
+
+const RegisterPageThree = ({ formik }) => {
+  return (
+    <>
+      <FormField
+        id="logadouro"
+        type="text"
+        label="logadouro"
+        onChange={formik.handleChange}
+        value={formik.values.logadouro}
+        onBlur={formik.handleBlur}
+        formik={formik}
+        placeholder="logadouro"
+      />
+      <FormField
+        id="number"
+        type="text"
+        label="number"
+        onChange={formik.handleChange}
+        value={formik.values.number}
+        onBlur={formik.handleBlur}
+        formik={formik}
+        placeholder="number"
+      />
+      <FormField
+        id="bairro"
+        type="text"
+        label="bairro"
+        onChange={formik.handleChange}
+        value={formik.values.bairro}
+        onBlur={formik.handleBlur}
+        formik={formik}
+        placeholder="bairro"
+      />
+      <FormField
+        id="cidade"
+        type="text"
+        label="cidade"
+        onChange={formik.handleChange}
+        value={formik.values.cidade}
+        onBlur={formik.handleBlur}
+        formik={formik}
+        placeholder="cidade"
+      />
+      <FormField
+        id="estado"
+        type="text"
+        label="estado"
+        onChange={formik.handleChange}
+        value={formik.values.estado}
+        onBlur={formik.handleBlur}
+        formik={formik}
+        placeholder="estado"
+      />
+      <FormField
+        id="cep"
+        type="text"
+        label="cep"
+        onChange={formik.handleChange}
+        value={formik.values.cep}
+        onBlur={formik.handleBlur}
+        formik={formik}
+        placeholder="cep"
+      />
+    </>
+  );
+};
+
+export default RegisterPageThree;

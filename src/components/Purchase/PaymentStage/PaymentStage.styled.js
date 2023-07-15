@@ -23,6 +23,7 @@ export const PaymentStageContainer = styled.form`
 export const AdvanceContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: row !important;
   align-items: center;
 
   > a {

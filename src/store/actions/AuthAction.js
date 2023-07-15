@@ -1,5 +1,6 @@
 import { setLoading } from "./UtilsAction";
 import { api } from "../../api";
+import { toast } from "react-hot-toast";
 
 export const handleLogin = async (values, dispatch, navigate) => {
   setLoading(dispatch);
@@ -16,7 +17,7 @@ export const handleLogin = async (values, dispatch, navigate) => {
     });
     navigate("/dashboard/tickets");
   } catch (error) {
-    console.log("não deu!");
+    alert("Login e/ou senha inválidos!");
   }
   setLoading(dispatch);
 };
@@ -36,11 +37,11 @@ export const handleRegister = async (values, dispatch, navigate) => {
   setLoading(dispatch);
   try {
     await api.post(`/usuarios`, values);
-    alert("foi");
+    alert("Cadastrado com sucesso!");
     //toast.success("Registrado com sucesso!");
     navigate("/login");
   } catch (error) {
-    alert("foi n kkkk", error);
+    alert("Um erro aconteceu, verifique os dados e tente novamente!");
     //if (error.response.data.errors) {
     //error.response.data.errors.map((e) => {
     //toast.error(`Um erro aconteceu!

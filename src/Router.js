@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
+import { Toaster } from "react-hot-toast";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { MainContent, RouterContainer } from "./Routers.styled";
 import Aside from "./components/Aside/Aside";
@@ -32,6 +33,7 @@ const Router = ({ dispatch, auth, loading }) => {
   ) : (
     <RouterContainer>
       {location.pathname.includes("/dashboard") && <Aside />}
+      <Toaster />
       <MainContent
         auth={auth.isLogged}
         pathname={location.pathname.includes("/dashboard")}

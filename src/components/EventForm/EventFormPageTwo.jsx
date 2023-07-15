@@ -6,22 +6,22 @@ const EventFormPageTwo = ({ formik }) => {
       <FormField
         id="valor_ingresso"
         type="text"
-        label="valor_ingresso"
+        label="Valor do ingresso"
         onChange={formik.handleChange}
         value={formik.values.valor_ingresso}
         onBlur={formik.handleBlur}
         formik={formik}
-        placeholder="valor_ingresso"
+        placeholder="Valor do ingresso"
       />
       <FormField
         id="numero_ingressos"
         type="text"
-        label="numero_ingressos"
+        label="Número de ingressos disponíveis"
         onChange={formik.handleChange}
         value={formik.values.numero_ingressos}
         onBlur={formik.handleBlur}
         formik={formik}
-        placeholder="numero_ingressos"
+        placeholder="Número de ingressos disponíveis"
       />
     </>
   );

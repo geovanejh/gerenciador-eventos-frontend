@@ -8,6 +8,7 @@ import Loading from "../Loading/Loading";
 import { PurchaseContainer } from "./Purchase.styled";
 import SelectScreen from "./SelectScreen";
 import PaymentScreen from "./PaymentScreen";
+import { toast } from "react-hot-toast";
 
 const Purchase = ({ auth }) => {
   const [loading, setLoading] = useState(true);
@@ -35,11 +36,10 @@ const Purchase = ({ auth }) => {
   const handlePayment = async (values) => {
     try {
       const { data } = await api.post(`/api/ingressos`, values);
-      alert("compra bem sucedida");
+      toast.success("Compra realizada com sucesso!");
       navigate("/dashboard/tickets");
     } catch (error) {
-      alert(error);
-      console.log(error);
+      toast.error("Um erro aconteceu, verifique seus dados e tente novamente!");
     }
   };
 

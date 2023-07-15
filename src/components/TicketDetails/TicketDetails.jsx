@@ -65,9 +65,18 @@ const TicketDetails = ({ id, auth }) => {
             </div>
             <div></div>
             <div>
-              <QRCode
-                value={`https://a5263ed537c56e.lhr.life/api/ingressos/check/${id}?event_id=${event?.event_id}&user_id=${auth.user_id}`}
-              ></QRCode>
+              {event?.evento.modalidade !== "online" ? (
+                <QRCode
+                  value={`https://a5263ed537c56e.lhr.life/api/ingressos/check/${id}?event_id=${event?.event_id}&user_id=${auth.user_id}`}
+                ></QRCode>
+              ) : (
+                <div>
+                  <p>
+                    <b>URL de acesso: </b>
+                    <a href={event.join_url}>Clique para juntar-se ao evento</a>
+                  </p>
+                </div>
+              )}
             </div>
           </Ticket>
         </TicketContainer>

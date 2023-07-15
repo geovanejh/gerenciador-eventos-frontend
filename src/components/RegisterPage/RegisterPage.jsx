@@ -9,9 +9,15 @@ import { AuthContainer } from "../AuthPages/AuthContainer";
 import FormField from "../Form/FormField/FormField";
 import { AuthForm } from "../AuthPages/LoginForm";
 import { Button } from "../Button/Button";
+import { useState } from "react";
+import RegisterPageOne from "./RegisterPageOne";
+import RegisterPageTwo from "./RegisterPageTwo";
+import RegisterPageThree from "./RegisterPageThree";
+import { AdvanceContainer } from "../Purchase/PaymentStage/PaymentStage.styled";
 
 const RegisterPage = ({ dispatch }) => {
   const navigate = useNavigate();
+  const [stage, setStage] = useState(1);
 
   //TODO formatar os dados.
   const formataDatos = (values) => {
@@ -49,150 +55,48 @@ const RegisterPage = ({ dispatch }) => {
           Voltar
         </Button>
         <Logo src={Logoimg} height="48px" />
-        <h3>4Pass</h3>
-        <h2>Entre na sua conta </h2>
-        <h5>Digite seu login e senha abaixo</h5>
-        <AuthForm onSubmit={formik.handleSubmit}>
-          <FormField
-            id="email"
-            type="text"
-            label="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="email"
-          />
-          <FormField
-            id="password"
-            type="password"
-            label="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="password"
-          />
-          <FormField
-            id="nome"
-            type="text"
-            label="nome"
-            onChange={formik.handleChange}
-            value={formik.values.nome}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="nome"
-          />
-          <FormField
-            id="sobrenome"
-            type="text"
-            label="sobrenome"
-            onChange={formik.handleChange}
-            value={formik.values.sobrenome}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="sobrenome"
-          />
-          <FormField
-            id="cpf"
-            type="text"
-            label="cpf"
-            onChange={formik.handleChange}
-            value={formik.values.cpf}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="cpf"
-          />
-          <FormField
-            id="rg"
-            type="text"
-            label="rg"
-            onChange={formik.handleChange}
-            value={formik.values.rg}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="rg"
-          />
-          <FormField
-            id="phone"
-            type="text"
-            label="phone"
-            onChange={formik.handleChange}
-            value={formik.values.phone}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="phone"
-          />
-          <FormField
-            id="logadouro"
-            type="text"
-            label="logadouro"
-            onChange={formik.handleChange}
-            value={formik.values.logadouro}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="logadouro"
-          />
-          <FormField
-            id="number"
-            type="text"
-            label="number"
-            onChange={formik.handleChange}
-            value={formik.values.number}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="number"
-          />
-          <FormField
-            id="bairro"
-            type="text"
-            label="bairro"
-            onChange={formik.handleChange}
-            value={formik.values.bairro}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="bairro"
-          />
-          <FormField
-            id="cidade"
-            type="text"
-            label="cidade"
-            onChange={formik.handleChange}
-            value={formik.values.cidade}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="cidade"
-          />
-          <FormField
-            id="estado"
-            type="text"
-            label="estado"
-            onChange={formik.handleChange}
-            value={formik.values.estado}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="estado"
-          />
-          <FormField
-            id="cep"
-            type="text"
-            label="cep"
-            onChange={formik.handleChange}
-            value={formik.values.cep}
-            onBlur={formik.handleBlur}
-            formik={formik}
-            placeholder="cep"
-          />
-          <Button primary type="submit" text="Login">
-            Registrar
-          </Button>
+        <AuthForm>
+          {stage === 1 && <RegisterPageOne formik={formik} />}
+          {stage === 2 && <RegisterPageTwo formik={formik} />}
+          {stage === 3 && <RegisterPageThree formik={formik} />}
+          <AdvanceContainer>
+            {stage !== 1 ? (
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  setStage(stage - 1);
+                }}
+              >
+                Voltar
+              </a>
+            ) : (
+              <a></a>
+            )}
+            {stage !== 3 && (
+              <Button
+                primary
+                onClick={(e) => {
+                  e.preventDefault();
+                  setStage(stage + 1);
+                }}
+              >
+                Avançar
+              </Button>
+            )}
+          </AdvanceContainer>
+          {stage === 3 && (
+            <Button
+              primary
+              text="Login"
+              onClick={(e) => {
+                e.preventDefault();
+                formik.handleSubmit();
+              }}
+            >
+              Registrar
+            </Button>
+          )}
         </AuthForm>
-        <h5>
-          Não possui uma conta?
-          <a href="#" onClick={() => navigate("/users")}>
-            <span>Registre-se</span>
-          </a>
-        </h5>
       </AuthContainer>
     </AuthPage>
   );

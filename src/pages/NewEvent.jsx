@@ -2,13 +2,15 @@ import { useFormik } from "formik";
 import { api } from "../api";
 import { FormContainer } from "../components/Form/FormContainer";
 import EventForm from "../components/EventForm/EventForm";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { connect } from "react-redux";
+import { toast } from "react-hot-toast";
 
 const NewEvent = ({ auth }) => {
   const { id } = useParams();
   const [page, setPage] = useState(1);
+  const navigate = useNavigate();
 
   const handleCreate = async (values) => {
     const dados = {
@@ -20,8 +22,10 @@ const NewEvent = ({ auth }) => {
 
     try {
       const { data } = await api.post(`/api/eventos`, dados);
+      toast.success("Evento criado com sucesso!");
+      navigate("/dashboard/events");
     } catch (error) {
-      alert("deu ruim");
+      toast.error("Um erro aconteceu, verifique os campos e tente novamente!");
     }
   };
 

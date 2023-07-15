@@ -8,6 +8,7 @@ import { ListPageContainer } from "../components/ListPages/ListPageContainer";
 import ListPageHeader from "../components/ListPages/ListPageHeader/ListPageHeader";
 import Loading from "../components/Loading/Loading";
 import PeopleListItem from "../components/PeopleListItem/PeopleListItem";
+import { toast } from "react-hot-toast";
 
 const TicketsPage = ({ auth }) => {
   const [loading, setLoading] = useState(true);
@@ -28,7 +29,7 @@ const TicketsPage = ({ auth }) => {
       }
       console.log("Ingressos do user: ", data);
     } catch (error) {
-      //toast.error("Um erro aconteceu, tente novamente.");
+      toast.error("Um erro aconteceu, tente novamente.");
     }
     setLoading(false);
   };

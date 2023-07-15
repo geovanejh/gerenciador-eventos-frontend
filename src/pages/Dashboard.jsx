@@ -18,7 +18,7 @@ const Dashboard = ({ dispatch }) => {
     setup();
   }, []);
 
-  return <>Página inicial</>;
+  return <> </>;
 };
 
 const mapStateToProps = (state) => ({
